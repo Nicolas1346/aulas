@@ -15,43 +15,53 @@ PARTE I – QUESTÕES TEÓRICAS
 ==================================================
 
 1) Explique o conceito de Programação Orientada a Objetos.
-
+Programação Orientada a Objetos é um paradigma que organiza o código em objetos, que representam elementos do mundo real, utilizando classes, atributos e métodos para facilitar a organização,
+reutilização e manutenção do sistema.
 --------------------------------------------------
 
 2) Diferencie classe e objeto com exemplos.
+Classe é um modelo ou estrutura que define características e comportamentos.
+Objeto é uma instância dessa classe.
 
+Exemplo:
+Classe: Carro
+Objeto: carro1, carro2
 --------------------------------------------------
 
 3) O que são atributos e métodos?
-
+Atributos são variáveis que representam características de um objeto.
+Métodos são funções que representam ações que o objeto pode realiza
 --------------------------------------------------
 
 4) Explique o conceito de encapsulamento.
-
+Encapsulamento é o princípio de esconder os dados de uma classe, permitindo acesso apenas por meio de métodos, garantindo maior segurança e controle.
 --------------------------------------------------
 
 5) Qual a função dos métodos get e set?
-
+Get serve para retornar o valor de um atributo.
+Set serve para modificar o valor de um atributo.
 --------------------------------------------------
 
 6) O que é um construtor? Quando ele é executado?
-
+Construtor é um método especial utilizado para inicializar objetos.
+Ele é executado automaticamente no momento em que o objeto é criado.
 --------------------------------------------------
 
 7) Explique o uso da palavra-chave this.
-
+A palavra-chave this é usada para referenciar o próprio objeto atual da classe, geralmente para diferenciar atributos de parâmetros.
 --------------------------------------------------
 
 8) O que é herança em Java?
-
+Herança é o mecanismo que permite que uma classe herde atributos e métodos de outra, promovendo reutilização de código.
 --------------------------------------------------
 
 9) O que é polimorfismo? Explique sobrescrita de métodos.
-
+Polimorfismo é a capacidade de um método ter diferentes comportamentos.
+Sobrescrita ocorre quando uma classe filha redefine um método da classe pai.
 --------------------------------------------------
 
 10) Para que serve a palavra-chave super?
-
+Serve para acessar métodos e atributos da classe pai, além de chamar o construtor da classe base.
 ==================================================
 PARTE II – QUESTÕES PRÁTICAS (FOCO EM POO)
 ==================================================
@@ -60,77 +70,206 @@ PARTE II – QUESTÕES PRÁTICAS (FOCO EM POO)
 - atributos private: nome, idade
 - getters e setters
 - método apresentar()
+---------------------------------------------------
+public class Pessoa {
+    private String nome;
+    private int idade;
 
---------------------------------------------------
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public int getIdade() { return idade; }
+    public void setIdade(int idade) { this.idade = idade; }
+
+    public void apresentar() {
+        System.out.println("Nome: " + nome + " Idade: " + idade);
+    }
+}
+
+
+---------------------------------------------------
 
 12) Crie uma classe Produto com:
 - atributos private
 - construtor com parâmetros
 - método com retorno para exibir dados
+---------------------------------------------------
+public class Produto {
+    private String nome;
+    private double preco;
 
+    public Produto(String nome, double preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+    public String exibirDados() {
+        return nome + " - R$ " + preco;
+    }
+}
 --------------------------------------------------
 
 13) Crie uma classe Aluno com:
 - nome, nota1, nota2
 - método calcularMedia()
 - método verificarSituacao()
+---------------------------------------------------
+public class Aluno {
+    private String nome;
+    private double nota1, nota2;
 
+    public double calcularMedia() {
+        return (nota1 + nota2) / 2;
+    }
+
+    public String verificarSituacao() {
+        if (calcularMedia() >= 6) {
+            return "Aprovado";
+        } else {
+            return "Reprovado";
+        }
+    }
+}
 --------------------------------------------------
 
 14) Crie uma classe Conta com:
 - saldo private
 - método depositar()
 - método sacar() com validação
+---------------------------------------------------
+public class Conta {
+    private double saldo;
 
+    public void depositar(double valor) {
+        saldo += valor;
+    }
+
+    public void sacar(double valor) {
+        if (valor <= saldo) {
+            saldo -= valor;
+        } else {
+            System.out.println("Saldo insuficiente");
+        }
+    }
+}
 --------------------------------------------------
 
 15) Crie uma classe Carro com:
 - marca, modelo
 - construtor
 - método exibirDados()
+----------------------------------------------------
+public class Carro {
+    private String marca;
+    private String modelo;
 
+    public Carro(String marca, String modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+    }
+
+    public void exibirDados() {
+        System.out.println(marca + " - " + modelo);
+    }
+}
 --------------------------------------------------
 
 16) Crie uma classe Animal com:
 - nome, idade
 - método emitirSom()
+---------------------------------------------------
+public class Animal {
+    protected String nome;
+    protected int idade;
 
+    public void emitirSom() {
+        System.out.println("Som genérico");
+    }
+}
 --------------------------------------------------
 
 17) Crie uma classe Cachorro que herda de Animal:
 - atributo raca
 - sobrescreva emitirSom()
+--------------------------------------------------
+public class Cachorro extends Animal {
+    private String raca;
 
+    @Override
+    public void emitirSom() {
+        System.out.println("Latido");
+    }
+}
 --------------------------------------------------
 
 18) Crie uma classe Gato que herda de Animal:
 - atributo numVidas
 - sobrescreva emitirSom()
+--------------------------------------------------
+public class Gato extends Animal {
+    private int numVidas;
 
+    @Override
+    public void emitirSom() {
+        System.out.println("Miau");
+    }
+}
 --------------------------------------------------
 
 19) Crie uma classe Veiculo:
 - marca, ano
 - método ligar()
+--------------------------------------------------
+public class Veiculo {
+    protected String marca;
+    protected int ano;
 
+    public void ligar() {
+        System.out.println("Veículo ligado");
+    }
+}
 --------------------------------------------------
 
 20) Crie uma classe Moto que herda de Veiculo:
 - cilindrada
 - sobrescreva ligar()
+--------------------------------------------------
+public class Moto extends Veiculo {
+    private int cilindrada;
 
+    @Override
+    public void ligar() {
+        System.out.println("Moto ligada");
+    }
+}
 --------------------------------------------------
 
 21) Crie uma classe Funcionario:
 - nome, salario
 - método calcularSalario()
+--------------------------------------------------
+public class Funcionario {
+    protected String nome;
+    protected double salario;
 
+    public double calcularSalario() {
+        return salario;
+    }
+}
 --------------------------------------------------
 
 22) Crie uma classe Gerente que herda de Funcionario:
 - bonus
 - sobrescreva calcularSalario()
+--------------------------------------------------
+public class Gerente extends Funcionario {
+    private double bonus;
 
+    @Override
+    public double calcularSalario() {
+        return salario + bonus;
+    }
+}
 --------------------------------------------------
 
 23) Crie uma hierarquia:
@@ -139,15 +278,65 @@ Incluindo:
 - encapsulamento
 - construtor com super
 - método com retorno
+--------------------------------------------------
+public class Animal {
+    private String nome;
 
+    public Animal(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+}
+
+public class Mamifero extends Animal {
+    public Mamifero(String nome) {
+        super(nome);
+    }
+}
+
+public class Marsupial extends Mamifero {
+    public Marsupial(String nome) {
+        super(nome);
+    }
+
+    public String exibir() {
+        return "Marsupial: " + getNome();
+    }
+}
 --------------------------------------------------
 
 24) Crie uma classe Pessoa com validação:
 - nome (somente letras)
 - codigo (somente números)
 - idade (não negativa)
+---------------------------------------------------
+public class Pessoa {
+    private String nome;
+    private String codigo;
+    private int idade;
 
---------------------------------------------------
+    public void setNome(String nome) {
+        if (nome.matches("[a-zA-Z ]+")) {
+            this.nome = nome;
+        }
+    }
+
+    public void setCodigo(String codigo) {
+        if (codigo.matches("\\d+")) {
+            this.codigo = codigo;
+        }
+    }
+
+    public void setIdade(int idade) {
+        if (idade >= 0) {
+            this.idade = idade;
+        }
+    }
+}
+---------------------------------------------------
 
 25) Desenvolva um sistema completo com:
 - classe pai
@@ -156,5 +345,39 @@ Incluindo:
 - construtores
 - métodos com retorno
 - sobrescrita
+-----------------------------------------------------
+public class Animal {
+    protected String nome;
 
+    public Animal(String nome) {
+        this.nome = nome;
+    }
+
+    public String emitirSom() {
+        return "Som genérico";
+    }
+}
+
+public class Cachorro extends Animal {
+    public Cachorro(String nome) {
+        super(nome);
+    }
+
+    @Override
+    public String emitirSom() {
+        return "Latido";
+    }
+}
+
+public class Gato extends Animal {
+    public Gato(String nome) {
+        super(nome);
+    }
+
+    @Override
+    public String emitirSom() {
+        return "Miau";
+    }
+}
+------------------------------------------------------
 ==================================================
